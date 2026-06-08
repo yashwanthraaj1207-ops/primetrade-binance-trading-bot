@@ -1,319 +1,392 @@
-# Binance Futures Testnet Trading Bot
+\# Binance Futures Trading Bot
 
-## Overview
 
-This project is a Python-based trading bot developed for Binance Futures Testnet (USDT-M). The application allows users to place Market and Limit orders through a command-line interface while maintaining a clean architecture, proper validation, structured logging, and exception handling.
 
-The project was developed as part of a Python Developer internship assessment and focuses on building a reusable and maintainable trading application.
+\## Overview
 
----
 
-## Features
 
-### Trading Features
+This project is a simple Python-based trading bot developed for the Binance Futures Testnet (USDT-M).
 
-* Place Market Orders
-* Place Limit Orders
-* Support BUY and SELL operations
-* Binance Futures Testnet integration
 
-### Validation Features
 
-* Symbol validation
-* Order type validation
-* Side validation
-* Quantity validation
-* Limit order price validation
+The bot allows users to place both Market and Limit orders through a command-line interface. It includes input validation, logging, and error handling to ensure reliable execution and easier debugging.
 
-### Engineering Features
 
-* Modular project structure
-* Command Line Interface (CLI)
-* Structured logging
-* Exception handling
-* Environment-based configuration
-* Reusable code organization
 
----
+This project was built as part of a Python Developer application task.
 
-## Project Architecture
+
+
+\---
+
+
+
+\## Features
+
+
+
+\* Place \*\*Market Orders\*\*
+
+\* Place \*\*Limit Orders\*\*
+
+\* Support for both \*\*BUY\*\* and \*\*SELL\*\* orders
+
+\* Command-line interface using `argparse`
+
+\* Input validation
+
+\* Request and response logging
+
+\* Error handling for invalid inputs and API exceptions
+
+\* Binance Futures Testnet integration
+
+
+
+\---
+
+
+
+\## Project Structure
+
+
 
 ```text
-trading_bot/
+
+trading\_bot/
+
 │
+
 ├── bot/
-│   ├── __init__.py
+
+│   ├── \_\_init\_\_.py
+
 │   ├── client.py
+
 │   ├── orders.py
+
 │   ├── validators.py
-│   └── logging_config.py
+
+│   └── logging\_config.py
+
 │
+
 ├── logs/
+
 │   └── trading.log
+
 │
+
 ├── cli.py
+
 ├── requirements.txt
+
 ├── README.md
-└── .env.example
+
+└── .env
+
 ```
 
-### Architecture Explanation
 
-| File              | Responsibility                         |
-| ----------------- | -------------------------------------- |
-| cli.py            | Entry point and command-line interface |
-| client.py         | Binance Futures client initialization  |
-| orders.py         | Order placement logic                  |
-| validators.py     | Input validation logic                 |
-| logging_config.py | Logging configuration                  |
-| trading.log       | Stores requests, responses, and errors |
 
----
+\---
 
-## Technology Stack
 
-* Python 3.x
-* python-binance
-* argparse
-* python-dotenv
-* logging
 
----
+\## Requirements
 
-## Prerequisites
 
-Before running the project, ensure you have:
 
-* Python 3.x installed
-* Binance Futures Testnet account
-* Binance Futures Testnet API Key
-* Internet connection
+\* Python 3.x
 
----
+\* Binance Futures Testnet Account
 
-## Installation
+\* Binance Testnet API Key and Secret
 
-### Clone Repository
+
+
+\---
+
+
+
+\## Installation
+
+
+
+\### Clone or Download the Project
+
+
 
 ```bash
+
 git clone <repository-url>
-cd trading_bot
+
+cd trading\_bot
+
 ```
 
-### Create Virtual Environment
+
+
+\### Create a Virtual Environment
+
+
 
 ```bash
+
 python -m venv venv
+
 ```
 
-### Activate Virtual Environment
+
+
+\### Activate Virtual Environment
+
+
 
 Windows:
 
+
+
 ```bash
-venv\Scripts\activate
+
+venv\\Scripts\\activate
+
 ```
 
-Linux/macOS:
+
+
+\### Install Dependencies
+
+
 
 ```bash
-source venv/bin/activate
-```
 
-### Install Dependencies
-
-```bash
 pip install -r requirements.txt
+
 ```
 
----
 
-## Environment Configuration
 
-Create a file named `.env` in the project root directory.
+\---
 
-Example:
+
+
+\## Environment Variables
+
+
+
+Create a `.env` file in the project root directory and add:
+
+
 
 ```env
-API_KEY=YOUR_BINANCE_TESTNET_API_KEY
-API_SECRET=YOUR_BINANCE_TESTNET_SECRET_KEY
+
+API\_KEY=YOUR\_BINANCE\_TESTNET\_API\_KEY
+
+API\_SECRET=YOUR\_BINANCE\_TESTNET\_SECRET\_KEY
+
 ```
 
----
 
-## Running the Application
 
-### Market Order
+\---
+
+
+
+\## Usage
+
+
+
+\### Place a Market Order
+
+
 
 ```bash
+
 python cli.py --symbol BTCUSDT --side BUY --type MARKET --quantity 0.001
+
 ```
 
-Example Output:
 
-```text
-===== ORDER SUMMARY =====
-
-Symbol : BTCUSDT
-Side   : BUY
-Type   : MARKET
-Qty    : 0.001
-
-===== ORDER RESPONSE =====
-
-Order ID: 123456789
-Status: FILLED
-Executed Qty: 0.001
-
-✅ ORDER SUCCESSFUL
-```
-
----
-
-### Limit Order
-
-```bash
-python cli.py --symbol BTCUSDT --side BUY --type LIMIT --quantity 0.001 --price 50000
-```
-
----
-
-## Validation Rules
-
-### Symbol
-
-Supported format:
-
-```text
-BTCUSDT
-ETHUSDT
-BNBUSDT
-```
-
-### Side
-
-Allowed values:
-
-```text
-BUY
-SELL
-```
-
-### Order Type
-
-Allowed values:
-
-```text
-MARKET
-LIMIT
-```
-
-### Quantity
-
-Must be greater than zero.
-
-### Price
-
-Required only for LIMIT orders.
-
----
-
-## Logging
-
-The application records all trading activity in:
-
-```text
-logs/trading.log
-```
-
-Logged information includes:
-
-* Market Order Requests
-* Market Order Responses
-* Limit Order Requests
-* Limit Order Responses
-* Validation Errors
-* API Errors
-* Unexpected Exceptions
 
 Example:
 
-```text
-2026-06-08 18:25:10 - INFO - MARKET ORDER REQUEST | BTCUSDT | BUY | 0.001
-2026-06-08 18:25:11 - INFO - MARKET RESPONSE | {...}
+
+
+```bash
+
+python cli.py --symbol BTCUSDT --side SELL --type MARKET --quantity 0.001
+
 ```
 
----
 
-## Error Handling
+
+\---
+
+
+
+\### Place a Limit Order
+
+
+
+```bash
+
+python cli.py --symbol BTCUSDT --side BUY --type LIMIT --quantity 0.001 --price 50000
+
+```
+
+
+
+Example:
+
+
+
+```bash
+
+python cli.py --symbol BTCUSDT --side SELL --type LIMIT --quantity 0.001 --price 120000
+
+```
+
+
+
+\---
+
+
+
+\## Logging
+
+
+
+All API requests, responses, and errors are logged automatically.
+
+
+
+Log file location:
+
+
+
+```text
+
+logs/trading.log
+
+```
+
+
+
+The log file contains:
+
+
+
+\* Market Order Requests
+
+\* Market Order Responses
+
+\* Limit Order Requests
+
+\* Limit Order Responses
+
+\* Validation Errors
+
+\* API Errors
+
+
+
+\---
+
+
+
+\## Error Handling
+
+
 
 The application handles:
 
-### Validation Errors
 
-Examples:
 
-* Invalid symbol
-* Invalid order type
-* Invalid side
-* Invalid quantity
-* Missing limit price
+\* Invalid order side
 
-### Binance API Errors
+\* Invalid order type
 
-Examples:
+\* Invalid quantity
 
-* Invalid API credentials
-* Insufficient balance
-* Invalid trading symbol
+\* Missing limit order price
 
-### Runtime Errors
+\* Binance API exceptions
 
-Examples:
+\* Unexpected runtime errors
 
-* Network connectivity issues
-* Unexpected exceptions
 
----
 
-## Assumptions
+\---
 
-* User possesses valid Binance Futures Testnet credentials.
-* Orders are executed only on Binance Futures Testnet.
-* Internet connectivity is available during execution.
-* The project is intended for educational and assessment purposes only.
 
----
 
-## Deliverables Included
+\## Assumptions
 
-* Source Code
-* README Documentation
-* requirements.txt
-* Logging Output
-* Market Order Example
-* Limit Order Example
 
----
 
-## Future Improvements
+\* The user has an active Binance Futures Testnet account.
 
-Potential enhancements include:
+\* API credentials are valid and stored in the `.env` file.
 
-* Stop-Limit Orders
-* OCO Orders
-* Grid Trading Strategy
-* Interactive CLI Menus
-* Web Dashboard
-* Database Integration
-* Trade History Analytics
+\* Orders are executed only on the Binance Futures Testnet environment.
 
----
+\* Internet connectivity is available while placing orders.
 
-## Author
 
-S. Yashwanth Raaj
 
-Python Developer Internship Assessment Project
+\---
 
-Built using Python and Binance Futures Testnet.
+
+
+\## Sample Output
+
+
+
+```text
+
+===== ORDER SUMMARY =====
+
+
+
+Symbol : BTCUSDT
+
+Side   : BUY
+
+Type   : MARKET
+
+Qty    : 0.001
+
+
+
+===== ORDER RESPONSE =====
+
+
+
+Order ID: 123456789
+
+Status: FILLED
+
+Executed Qty: 0.001
+
+
+
+ORDER SUCCESSFUL
+
+```
+
+
+
+\---
+
+
+
+\## Author
+
+
+
+Developed as part of a Python Developer internship application task using Python and Binance Futures Testnet.
+
+
+
