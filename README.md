@@ -54,43 +54,23 @@ This project was built as part of a Python Developer application task.
 
 ```text
 
-trading\_bot/
-
+primetrade-binance-trading-bot
 │
-
-├── bot/
-
-│   ├── \_\_init\_\_.py
-
+├── bot
+│   ├── __init__.py
 │   ├── client.py
-
 │   ├── orders.py
-
 │   ├── validators.py
-
-│   └── logging\_config.py
-
+│   └── logging_config.py
 │
-
-├── logs/
-
+├── logs
 │   └── trading.log
-
 │
-
 ├── cli.py
-
-├── requirements.txt
-
 ├── README.md
-
-└── .env
-
-```
-
-
-
-\---
+├── requirements.txt
+├── .env.example
+└── .gitignore
 
 
 
