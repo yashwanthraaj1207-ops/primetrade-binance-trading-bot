@@ -1,392 +1,157 @@
-\# Binance Futures Trading Bot
+# 🚀 PrimeTrade Binance Futures Trading Bot
 
+## Overview
 
+PrimeTrade is a Python-based Binance Futures Testnet Trading Bot designed to execute Market and Limit orders through a command-line interface. The project demonstrates API integration, modular software architecture, input validation, logging, and error handling in a real-world trading environment.
 
-\## Overview
+Built using the Binance Futures Testnet, this project simulates cryptocurrency trading workflows without risking real funds.
 
+---
 
+## ✨ Features
 
-This project is a simple Python-based trading bot developed for the Binance Futures Testnet (USDT-M).
+* Market Order Execution
+* Limit Order Execution
+* BUY and SELL Order Support
+* Binance Futures Testnet Integration
+* Command-Line Interface (CLI)
+* Input Validation
+* Structured Logging
+* Exception Handling
+* Environment Variable Security
+* Modular Code Architecture
 
+---
 
+## 🏗️ Architecture
 
-The bot allows users to place both Market and Limit orders through a command-line interface. It includes input validation, logging, and error handling to ensure reliable execution and easier debugging.
+CLI Input
+↓
+Validation Layer
+↓
+Order Processing Module
+↓
+Binance API Client
+↓
+Response Handling
+↓
+Logging & Monitoring
 
+---
 
-
-This project was built as part of a Python Developer application task.
-
-
-
-\---
-
-
-
-\## Features
-
-
-
-\* Place \*\*Market Orders\*\*
-
-\* Place \*\*Limit Orders\*\*
-
-\* Support for both \*\*BUY\*\* and \*\*SELL\*\* orders
-
-\* Command-line interface using `argparse`
-
-\* Input validation
-
-\* Request and response logging
-
-\* Error handling for invalid inputs and API exceptions
-
-\* Binance Futures Testnet integration
-
-
-
-\---
-
-
-
-\## Project Structure
-
-
+## 📂 Project Structure
 
 ```text
+primetrade-binance-trading-bot/
 
-trading\_bot/
-
-│
-
-├── bot/
-
-│   ├── \_\_init\_\_.py
-
-│   ├── client.py
-
-│   ├── orders.py
-
-│   ├── validators.py
-
-│   └── logging\_config.py
-
-│
-
-├── logs/
-
-│   └── trading.log
-
-│
-
+├── client.py
+├── orders.py
+├── validators.py
+├── logging_config.py
 ├── cli.py
-
 ├── requirements.txt
-
-├── README.md
-
-└── .env
-
+├── .env.example
+└── README.md
 ```
 
+---
 
+## 🛠️ Technologies Used
 
-\---
+* Python
+* Binance Futures API
+* argparse
+* python-dotenv
+* Logging Module
 
+---
 
+## 🔒 Security
 
-\## Requirements
+Sensitive credentials are managed through environment variables and are never hardcoded into the source code.
 
+Example:
 
+API_KEY=YOUR_API_KEY
 
-\* Python 3.x
+API_SECRET=YOUR_API_SECRET
 
-\* Binance Futures Testnet Account
+---
 
-\* Binance Testnet API Key and Secret
+## ⚙️ Installation
 
-
-
-\---
-
-
-
-\## Installation
-
-
-
-\### Clone or Download the Project
-
-
+Clone the repository:
 
 ```bash
-
-git clone <repository-url>
-
-cd trading\_bot
-
+git clone https://github.com/yashwanthraaj1207-ops/primetrade-binance-trading-bot.git
 ```
 
-
-
-\### Create a Virtual Environment
-
-
+Navigate to the project:
 
 ```bash
-
-python -m venv venv
-
+cd primetrade-binance-trading-bot
 ```
 
-
-
-\### Activate Virtual Environment
-
-
-
-Windows:
-
-
+Install dependencies:
 
 ```bash
-
-venv\\Scripts\\activate
-
-```
-
-
-
-\### Install Dependencies
-
-
-
-```bash
-
 pip install -r requirements.txt
-
 ```
 
+Create a `.env` file using `.env.example`.
 
+---
 
-\---
+## 🚀 Usage
 
-
-
-\## Environment Variables
-
-
-
-Create a `.env` file in the project root directory and add:
-
-
-
-```env
-
-API\_KEY=YOUR\_BINANCE\_TESTNET\_API\_KEY
-
-API\_SECRET=YOUR\_BINANCE\_TESTNET\_SECRET\_KEY
-
-```
-
-
-
-\---
-
-
-
-\## Usage
-
-
-
-\### Place a Market Order
-
-
+### Market Order
 
 ```bash
-
 python cli.py --symbol BTCUSDT --side BUY --type MARKET --quantity 0.001
-
 ```
 
-
-
-Example:
-
-
+### Limit Order
 
 ```bash
-
-python cli.py --symbol BTCUSDT --side SELL --type MARKET --quantity 0.001
-
-```
-
-
-
-\---
-
-
-
-\### Place a Limit Order
-
-
-
-```bash
-
 python cli.py --symbol BTCUSDT --side BUY --type LIMIT --quantity 0.001 --price 50000
-
 ```
 
+---
 
+## 📊 Skills Demonstrated
 
-Example:
+* API Integration
+* Software Architecture
+* Command-Line Application Development
+* Input Validation
+* Error Handling
+* Logging and Monitoring
+* Environment Variable Management
+* Python Development
 
+---
 
+## 🎯 Future Enhancements
 
-```bash
+* RSI-Based Trading Strategy
+* Moving Average Strategy
+* Backtesting Engine
+* Telegram Notifications
+* Performance Analytics Dashboard
+* Multi-Asset Trading Support
 
-python cli.py --symbol BTCUSDT --side SELL --type LIMIT --quantity 0.001 --price 120000
+---
 
-```
+## 👨‍💻 Author
 
+S Yashwanth Raaj
 
+B.E. Computer Science and Engineering (AI & ML)
 
-\---
+Sri Sairam Engineering College
 
+LinkedIn:
+https://www.linkedin.com/in/yashwanthraaj1207
 
-
-\## Logging
-
-
-
-All API requests, responses, and errors are logged automatically.
-
-
-
-Log file location:
-
-
-
-```text
-
-logs/trading.log
-
-```
-
-
-
-The log file contains:
-
-
-
-\* Market Order Requests
-
-\* Market Order Responses
-
-\* Limit Order Requests
-
-\* Limit Order Responses
-
-\* Validation Errors
-
-\* API Errors
-
-
-
-\---
-
-
-
-\## Error Handling
-
-
-
-The application handles:
-
-
-
-\* Invalid order side
-
-\* Invalid order type
-
-\* Invalid quantity
-
-\* Missing limit order price
-
-\* Binance API exceptions
-
-\* Unexpected runtime errors
-
-
-
-\---
-
-
-
-\## Assumptions
-
-
-
-\* The user has an active Binance Futures Testnet account.
-
-\* API credentials are valid and stored in the `.env` file.
-
-\* Orders are executed only on the Binance Futures Testnet environment.
-
-\* Internet connectivity is available while placing orders.
-
-
-
-\---
-
-
-
-\## Sample Output
-
-
-
-```text
-
-===== ORDER SUMMARY =====
-
-
-
-Symbol : BTCUSDT
-
-Side   : BUY
-
-Type   : MARKET
-
-Qty    : 0.001
-
-
-
-===== ORDER RESPONSE =====
-
-
-
-Order ID: 123456789
-
-Status: FILLED
-
-Executed Qty: 0.001
-
-
-
-ORDER SUCCESSFUL
-
-```
-
-
-
-\---
-
-
-
-\## Author
-
-
-
-Developed as part of a Python Developer internship application task using Python and Binance Futures Testnet.
-
-
-
+Portfolio:
+https://my-own-portfolio-yashwanth-raaj.lovable.app/
